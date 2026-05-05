@@ -50,12 +50,6 @@
 curl -fsSL https://raw.githubusercontent.com/rohankewal/pom/main/install.sh | sh
 ```
 
-### Homebrew
-
-```sh
-brew install yourusername/tap/pom
-```
-
 ### Go
 
 ```sh
