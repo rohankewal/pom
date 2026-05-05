@@ -13,7 +13,7 @@
 
 [![Go Version](https://img.shields.io/badge/go-1.24+-00ADD8?style=flat&logo=go)](https://go.dev)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat)](LICENSE)
-[![Latest Release](https://img.shields.io/github/v/release/yourusername/pom?style=flat)](https://github.com/yourusername/pom/releases)
+[![Latest Release](https://img.shields.io/github/v/release/rohankewal/pom?style=flat)](https://github.com/rohankewal/pom/releases)
 
 </div>
 
@@ -43,6 +43,12 @@
 ---
 
 ## Install
+
+### Homebrew (macOS / Linux)
+
+```sh
+brew install rohankewal/tap/pom
+```
 
 ### macOS / Linux — one-liner
 
@@ -208,7 +214,10 @@ Your score (0–100) is calculated from three signals:
 Switch theme in config or at the command line:
 
 ```sh
-pom --theme tokyo-night    # one-off override not available yet — set in config
+# Set permanently in config
+theme = tokyo-night
+
+# Or override for a single session via the config flag (edit ~/.config/pom/config)
 ```
 
 | Theme | Description |

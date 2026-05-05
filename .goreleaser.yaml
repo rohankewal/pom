@@ -27,6 +27,22 @@ archives:
         formats: [zip]
     name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
 
+brews:
+  - name: pom
+    homepage: "https://github.com/rohankewal/pom"
+    description: "A focused Pomodoro timer for your terminal — analytics, themes, lo-fi music, and tmux integration"
+    license: "MIT"
+    repository:
+      owner: rohankewal
+      name: homebrew-tap
+      branch: main
+      token: "{{ .Env.GITHUB_TOKEN }}"
+    directory: Formula
+    test: |
+      system "#{bin}/pom --version"
+    install: |
+      bin.install "pom"
+
 checksum:
   name_template: "checksums.txt"
 
