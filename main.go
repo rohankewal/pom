@@ -510,6 +510,7 @@ func main() {
 	sessionTags := flag.String("tags", "", "Comma-separated tags for this session (e.g. work,deepwork)")
 	rounds := flag.Int("rounds", cfg.Rounds, "Number of work/break rounds")
 	goal := flag.Duration("goal", cfg.Goal, "Daily focus goal (e.g. 2h). 0 = no goal")
+	noAltScreen := flag.Bool("no-alt-screen", false, "Disable alternate screen (useful for recording demos)")
 	flag.Parse()
 
 	if *ver {
@@ -567,7 +568,11 @@ func main() {
 	startMusic(cfg)
 	runHook(cfg.HookWorkStart, hookEnv(m))
 
-	if _, err := tea.NewProgram(m, tea.WithAltScreen()).Run(); err != nil {
+	opts := []tea.ProgramOption{}
+	if !*noAltScreen {
+		opts = append(opts, tea.WithAltScreen())
+	}
+	if _, err := tea.NewProgram(m, opts...).Run(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}

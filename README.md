@@ -21,7 +21,7 @@
 
 `pom` is a terminal Pomodoro timer with analytics, themes, lo-fi music, lifecycle hooks, and tmux status-line integration — everything you need to build a deep-work habit, in a single binary with no runtime dependencies.
 
-> **Demo GIF coming soon** — run `pom` to see it live.
+<img src="demo/demo.gif" alt="pom demo" width="800" />
 
 ---
 
