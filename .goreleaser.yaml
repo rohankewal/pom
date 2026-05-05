@@ -1,0 +1,55 @@
+version: 2
+
+project_name: pom
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - binary: pom
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X main.version={{.Version}}
+
+archives:
+  - formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+
+checksum:
+  name_template: "checksums.txt"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
+      - Merge pull request
+      - Merge branch
+
+release:
+  github:
+    owner: rohankewal
+    name: pom
+  name_template: "{{.Version}}"
+  footer: |
+    ## Install
+
+    ```sh
+    curl -fsSL https://raw.githubusercontent.com/rohankewal/pom/main/install.sh | sh
+    ```
+
+    Or: `brew install rohankewal/tap/pom` · `go install github.com/rohankewal/pom@latest`
